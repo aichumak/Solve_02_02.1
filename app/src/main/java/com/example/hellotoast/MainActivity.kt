@@ -1,10 +1,10 @@
 package com.example.hellotoast
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private var mCount = 0
@@ -16,12 +16,15 @@ class MainActivity : AppCompatActivity() {
         mShowCount = findViewById(R.id.show_count)
     }
 
-    fun showToast(view: View) {
-        Toast.makeText(this, R.string.toast_message, Toast.LENGTH_SHORT).show()
+    fun sayHello(view: View) {
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra(Intent.EXTRA_TEXT, mCount.toString())
+        startActivity(intent)
     }
 
     fun countUp(view: View) {
         mCount++
         mShowCount.text = mCount.toString()
     }
+
 }
